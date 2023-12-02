@@ -1,0 +1,38 @@
+{
+  "name": "Pitch cn 辅助程序",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "用于拦截原本的语言包请求，否则汉化不生效.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "activeTab",
+    "tabs",
+    "storage",
+    "webRequest",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "*://*.pitch.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.pitch.com/*"
+      ],
+      "js": [
+        "base.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
